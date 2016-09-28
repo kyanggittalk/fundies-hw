@@ -145,3 +145,48 @@
                      (- SCENE-DIM (/ (image-height
                                       (send (send this ship) draw)) 2)))
                 (send this bullets))])))
+
+
+
+;; 2.2 Finger Exercises: Designing Classes.
+
+; A TernaryTree is on of:
+; - (new tree% Number TernaryTree TernaryTree TernaryTree)
+; - (new leaf% Number)
+(define-class tree%
+  (fields value left center right)
+  ; size : -> Number
+  ; how many numbers are there in the tree?
+  (define (size)
+    (send (send this map (λ (x) 1)) sum))
+  ; sum : -> Number
+  ;sums all the numbers in the tree
+  (define (sum)
+    (+ (send this value)
+       (send (send this left) sum)
+       (send (send this center) sum)
+       (send (send this right) sum)))
+  ; prod : -> Number
+  ;computes the product of all the numbers in the tree
+  (define (prod)
+    (* (send this value)
+       (send (send this left) prod)
+       (send (send this center) prod)
+       (send (send this right) prod)))
+  ; contains? : Number -> Boolean
+  ;is the given number in the tree?
+  (define (contains? n)
+    (or (= n (send this value))
+        (send (send this left) contains?)
+        (send (send this center) contains?)
+        (send (send this right) contains?)))
+  ; map : [Number -> Number] -> TernaryTree
+  (define (map f)
+    (new tree%
+         (f (send this value))
+         (send (send this left) map f)
+         (send (send this center) map f)
+         (send (send this right) map f)))
+  ; max : -> Number
+  ;what's the largest number in the tree.
+  (define (max) ...))

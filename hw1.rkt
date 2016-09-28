@@ -31,7 +31,7 @@
   ;; draw : -> Image
   ;; Draws the Ship.
   (define (draw)
-    (overlay (circle 8 "solid" "blue")
+    (overlay (circle 8 "solid" "purple")
              (triangle 40 "solid" "green"))))
 
 ;; Bullet Class
@@ -74,9 +74,9 @@
   ;; draw : -> Image
   ;; Draws the Invader.
   (define (draw)
-    (overlay/offset (circle 8 "solid" "red")
+    (overlay/offset (circle 8 "solid" "blue")
                     0 8
-                    (ellipse 40 20 "solid" "red")))
+                    (ellipse 80 40 "solid" "blue")))
   ;; wall-collide? : -> Boolean
   ;; Does the Invader collide with a wall?
   (define (wall-collide)

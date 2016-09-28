@@ -8,7 +8,7 @@
 
 ;; 2.1 Space Invaders
 
-(define SCENE-DIM 700)
+(define SCENE-DIM 500)
 
 ;; Ship Class
 ;; A Ship is a (new ship% Number)
@@ -31,7 +31,7 @@
   ;; draw : -> Image
   ;; Draws the Ship.
   (define (draw)
-    (overlay (circle 8 "solid" "blue")
+    (overlay (circle 8 "solid" "purple")
              (triangle 40 "solid" "green"))))
 
 ;; Bullet Class
